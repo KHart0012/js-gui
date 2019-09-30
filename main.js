@@ -1,51 +1,27 @@
-const add = (x, y) => { return x + y }
+function calc_shortest(str1, str2, str3){
+    const l1 = str1.length
+    const l2 = str2.length
+    const l3 = str3.length
 
-const validate = async (event) => {
-  console.log(`triggered validate on ${event.target.id}`)
-  const isValid = event.target.checkValidity()
-  if (isValid) {
-    event.target.nextElementSibling.innerHTML = ''
-  } else {
-    event.target.nextElementSibling.innerHTML = 'Invalid input'
-    event.target.focus()
-  }
+    if (l1 <= l2 && l1 <= l3){
+        return str1
+    }
+    else if (l2 <= l1 && l2 <= l3){
+        return str2
+    }
+    else {
+        return str3
+    }
 }
 
-const updateWithAdd = async (event) => {
-  document.querySelector('#result').innerHTML = ''
-  if (document.querySelector('#firstNumber').checkValidity() && document.querySelector('#secondNumber').checkValidity()) {
-    const regex = /[^a-zA-Z_]/g
-    const s = document.querySelector('#guest').value.replace(regex, '')
-    const i = parseInt(document.querySelector('#firstNumber').value)
-    const j = parseInt(document.querySelector('#secondNumber').value)
-    const ans = `${s}, your sum is ${add(i, j)}.`
-    document.querySelector('#result').innerHTML = ans
-  }
+function find_smallest() {
+    const str1 = document.querySelector("#input1").value
+    const str2 = document.querySelector("#input2").value
+    const str3 = document.querySelector("#input3").value
+
+    const shortest = calc_shortest(str1, str2, str3)
+
+    document.querySelector('#result').innerHTML = shortest
 }
 
-const updateWithJoke = async (event) => {
-  document.querySelector('#result').innerHTML = ''
-  const url = 'https://api.icndb.com/jokes/random?limitTo=[nerdy]'
-  const response = await fetch(url)
-  const obj = await response.json()
-  const joke = obj.value.joke || 'No joke for you.'
-  document.querySelector('#result').innerHTML = joke
-}
-
-// delegate to dynamic elements (e.g. when testing)
-// focusout is like blur, but it bubbles up
-
-document.addEventListener('focusout', event => {
-  if ((event.target && event.target.id === 'firstNumber') ||
-    (event.target && event.target.id === 'secondNumber')) {
-    validate(event)
-  }
-})
-
-document.addEventListener('click', event => {
-  if (event.target && event.target.id === 'addButton') { updateWithAdd(event) }
-})
-
-document.addEventListener('click', event => {
-  if (event.target && event.target.id === 'getJokeButton') { updateWithJoke(event) }
-})
+document.querySelector('#submit').addEventListener('click', find_smallest)
