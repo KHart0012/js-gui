@@ -13,23 +13,32 @@
 </head>
 <body>
     <br><br>
-    <h1>Find Total Number of items</h1>
-    <br>
     <main>
         <form>
-            <div class="form-group">
-                <label for="input1">Number of Items per Bag</label>
-                <input type="number" class="form-control" id="input1" placeholder="0">
+            <div class="row justify-content-sm-center">
+                <div class="col-sm-10">
+                    <h1>Find Total Number of Items Calculator</h1>
+                    <br>
+                </div>
+                <div class="col-sm-4">
+                    <label for="input1">Number of Items per Bag</label>
+                    <input type="number" class="form-control" id="input1" placeholder="0">
+                </div>
+                <div class="col-sm-4">
+                    <label for="input2">Number of Bags</label>
+                    <input type="number" class="form-control" id="input2" placeholder="0">
+                </div>
+                <div class="col-sm-8">
+                    <br>
+                    <button type="button" id="submit" class="btn btn-dark btn-lg btn-block">Calculate</button>
+                </div>
+                <div class="col-sm-5">
+                    <br>
+                    <h2>Total Number of Items:<p id="result"></p></h2>     
+                </div>
+                
             </div>
-            <div class="form-group">
-                <label for="input2">Number of Bags</label>
-                <input type="number" class="form-control" id="input2" placeholder="0">
-            </div>
-            <button type="button" id="submit" class="btn btn-dark btn-lg btn-block">Calculate</button>
         </form>
-        <br>
-        <h2>Total Number of Items:</h2>
-        <p id="result"></p>
     </main>
     <script src="main.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
